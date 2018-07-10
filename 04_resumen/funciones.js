@@ -38,6 +38,17 @@ function calcularArea(figura, datos) {
     return resultado.toFixed(2)
 }
 
+try ¨{
+    let sFiguera = 'pentagono'
+    let oDatos = ()
+    console.log(CalcularArea(sFigura, oDatos))
+)catch (error) (
+    console.log.apply(error)
+}
+)
+
+}
+
 
 // Uso o invocacion
 
