@@ -77,3 +77,20 @@ console.log(aElegidos)
 console.log("Original: ")
 console.log(aNombres) 
 
+aNombres = ['Pepe', 'Luis', 'Arancha', 'Rosa', 'Maria']
+
+aNombres.push('Lorenzo', 'Herminia')
+console.log(aNombres);
+
+//una tabla se traduce en un array bidimensional ej:
+let aNotas = [[10,7,8], [5,4,7], [6,3,2]]
+console.log(aNotas[1][1]);
+
+//estaria incluyendo un array de un array...que la posicion tal sea un array
+
+aNombres.push(['Lorenzo', 'Herminia'])
+console.log(aNombres);
+
+
+aNombres.push(...['Lorenzo', 'Herminia'])
+console.log(aNombres);
