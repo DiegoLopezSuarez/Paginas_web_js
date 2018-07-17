@@ -7,33 +7,59 @@ function app () {
     let domOutput = document.querySelector('#output')
 
     // Defino los manejadores de eventos de algunos nodos
+    // domBtnSaludar.addEventListener('click', mostrar)
+    // domBtnBorrar.addEventListener('click', borrar)
     domBtnSaludar.addEventListener('click', saludar)
-    domBtnBorrar.addEventListener('click', borrar)
-
-    domNombre.addEventListener('input', leerDatos)
-    /* domNombre.addEventListener('change', detectarChange) */
-
-    function leerDatos() {
-        let valorNombre = domNombre.value
-        console.log('Input detectado')
-        console.log('valorNombre: ', valorNombre)
-        // domOutput.innerHTML = `Hola, <strong>${valorNombre}</strong>`
-        alert(valorNombre)
-    }
-
-    /* function detectarChange() {
-        let finalNombre = domNombre.value
-        console.log('Change detectado')
-        console.log('finalNombre: ', finalNombre)
-    } */
-
-    function saludar() {
-        console.log('Hola amigo')
+    domBtnBorrar.addEventListener('click', saludar)
+    
+    //dos funciones por separado:
+    
+    function mostrar() {
+        domOutput.innerHTML = ''
+        if (!!domNombre.value) {
+            domOutput.innerHTML = `Hola, <strong>${domNombre.value}</strong>`
+        } 
     }
 
     function borrar () {
-        console.log('Aun no se borrar');
+        domNombre.value = ''
+        mostrar()
     }
+
+    function saludar(ev) {
+        console.log(ev)
+    }
+
+        //dos funciones combinadas en una sola linea, otra manera de hacerlo, un unico manejador:
+
+        function saludar(ev) {
+            if (ev.target.id === 'btnBorrar') {
+                domNombre.value = '' 
+            }
+            domOutput.innerHTML = ''
+            if (!!domNombre.value) {
+                domOutput.innerHTML = `Hola, <strong>${domNombre.value}</strong>`
+            } 
+        }
+
+        // otra forma mas de escribirlo usando doble click para ver que una misma funcion puede responder a varios botones o a varios eventos de un mismo botón:
+
+        function saludar(ev) {
+
+            if (ev.type === 'dblclick') {
+                domOutput.innerHTML = "DBLCLICK no se debe usar"
+                return
+            }
+            if (ev.target.id === 'btnBorrar') {
+                domNombre.value = '' 
+            }
+            domOutput.innerHTML = ''
+            if (!!domNombre.value) {
+                domOutput.innerHTML = `Hola, <strong>${domNombre.value}</strong>`
+            } 
+        }
+
+
 
 }
 document.addEventListener('DOMContentLoaded', app)
