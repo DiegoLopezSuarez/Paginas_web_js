@@ -1,18 +1,16 @@
 function main() {
 
-    console.log("Main")
-
     document.querySelector('#btnPulsar')
         .addEventListener('click', pulsar)
 
-    document.querySelector('#output')
+    document.querySelector('main')
         .addEventListener('escribir', escribir)
 
     function pulsar(oEv) {
-        console.dir(oEv)
-        oEv.target.dispatchEvent(
-            new Event('escribir')
-        )
+        console.dir(oEv.target)
+        oEv.target.dispatchEvent(new Event('escribir', {
+            'bubbles': true,
+          }))
     }
 
     function escribir(oEv) {
@@ -23,4 +21,7 @@ function main() {
 }
 
 
-document.addEventListener('DOMCOntentLoaded', main)
+document.addEventListener('DOMContentLoaded', main)
+
+
+document.addEventListener('DOMContentLoaded', main)
